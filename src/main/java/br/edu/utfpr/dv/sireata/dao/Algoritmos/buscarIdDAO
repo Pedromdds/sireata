@@ -1,0 +1,7 @@
+package br.edu.utfpr.dv.sireata.dao.Algoritmos;
+import java.sql.SQLException;
+import java.util.Set;
+
+public class BuscaIdDAO {
+    public Set<? extends EntidadeDAO> buscarPorId(int value) throws SQLException;
+}
