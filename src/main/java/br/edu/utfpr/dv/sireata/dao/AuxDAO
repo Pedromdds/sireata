@@ -1,0 +1,40 @@
+package br.edu.utfpr.dv.sireata.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Set;
+
+import br.edu.utfpr.dv.sireata.dao.Algoritmos.BuscarIdDAO;
+import br.edu.utfpr.dv.sireata.dao.Algoritmos.carregarObjetoDAO;
+import br.edu.utfpr.dv.sireata.dao.Algoritmos.deleteDAO;
+import br.edu.utfpr.dv.sireata.dao.Algoritmos.listarAtaDAO;
+import br.edu.utfpr.dv.sireata.dao.Algoritmos.saveDAO;
+
+public abstract class AuxDAO<P> {
+	  protected BuscarIdDAO<T> buscar;
+    protected carregarObjetoDAO<T> carregar;
+    protected listarAtaDAO<T> listar;
+    protected saveDAO<T> save;
+    protected deleteDAO delete;
+    
+    public Set<? extends P> buscar(int value) throws SQLException {
+        return buscar.buscarPorId(value);
+    }
+    
+    public P carregarObjeto(ResultSet rs) throws SQLException {
+        return carregar.carregarObjeto(rs);
+    }
+    
+    public List<P> listar(int value) throws SQLException {
+        return listar.listarPorAta(value);
+    }
+
+    public int salvar(P newEntity) throws SQLException {
+        return save.salvar(newEntity);
+    }
+
+    public void excluir(int value) throws SQLException {
+        delete.excluir(value);
+    }
+}
